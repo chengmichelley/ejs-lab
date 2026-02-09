@@ -60,5 +60,14 @@ app.get('/menu', (req, res) =>{
     res.render('menu.ejs', { menu: RESTAURANT.menu });
 });
 
+app.get('/menu/:category', (req, res) => {
+    const menuItems = RESTAURANT.menu.filter(item => item.category === req.params.category);
+    const categoryName = req.params.category;
+    const capitalizeCategoryName = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
+    res.render('category.ejs', {
+        menuItems: menuItems,
+        categoryName: capitalizeCategoryName
+    });
+});
 
 app.listen(3000);
