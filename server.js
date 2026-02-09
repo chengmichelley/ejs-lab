@@ -53,7 +53,8 @@ const RESTAURANT = {
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.render('home.ejs' , { restaurant: RESTAURANT });
 });
+
 
 app.listen(3000);
